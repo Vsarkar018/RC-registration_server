@@ -8,13 +8,10 @@ app.use(require("cors")());
 app.use(express.json());
 const mongoose = require("mongoose");
 const connectDB = () => {
-  return mongoose.connect(
-    "mongodb+srv://vsarkar018:getmein018@nodejsprojects.1mv6s7n.mongodb.net/RecruitmentData?retryWrites=true&w=majority",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  );
+  return mongoose.connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
 };
 const router = require("./Router");
 app.use("/", router);
